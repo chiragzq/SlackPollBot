@@ -2,6 +2,7 @@ const fs = require("fs");
 const config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));
 const SlackBot = require("slackbots");
 const axios = require("axios");
+const http = require('http');
 
 const bot = new SlackBot({
     token: config.token,
@@ -37,6 +38,10 @@ bot.on("message", async (message) => {
         
     }
 });
+
+http.createServer((req, res) => {
+    res.end("");
+}).listen(process.env.PORT || 8000);
 
 
 
