@@ -15,7 +15,7 @@ bot.on("start", () => {
 
 bot.on("message", async (message) => {
     if(!message.type || message.type != "message" || message.subtype == "bot_message" || message.subtype == "message_deleted") return;
-    if(message.text.startsWith("!poll")) {
+    if(message.text.startsWith("+poll")) {
         console.log(message);
         await api("POST", "reactions.add", {
             token: config.token,
